@@ -8,7 +8,7 @@ namespace TagCloud
     public static class Program
     {
         private static void StartTagCloud(int width, int height, int count,
-            Color color, float maxSizeWord, FontStyle style, string textFileName, string fileNameWithPicture)
+            Color color, float maxSizeWord, float minSizeWord, FontStyle style, string textFileName, string fileNameWithPicture)
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<TxtReader>().As<IFormatReader>();
@@ -18,7 +18,7 @@ namespace TagCloud
                 config = config.SetMinCountSymbolInWord(count);
                 return (ContentConfigurator)config;
             }).As<IWordFilter>();
-            builder.Register(c => new PictureConfigurator(width, height, color, maxSizeWord, style)).As<IPainter>();
+            builder.Register(c => new PictureConfigurator(width, height, color, maxSizeWord, minSizeWord, style)).As<IPainter>();
             builder.Register(c => new SpiralBuilder(new Point(width / 2, height / 2), width, height))
                 .As<ITagCloudBuilder>();
             builder.RegisterType<TagCloud>();
@@ -33,7 +33,7 @@ namespace TagCloud
         private const string usage = @" Tag Cloud
 
         Usage:
-        TagCloud.exe [--width WIDTH] [--height HEIGHT] [--count COUNT] [--color COLOR] [--style STYLE] [--text TEXT] [--pict PICTURE] [--msize MAX]
+        TagCloud.exe [--width WIDTH] [--height HEIGHT] [--count COUNT] [--color COLOR] [--style STYLE] [--text TEXT] [--pict PICTURE] [--maxsize MAX] [--minsize MIN]
         TagCloud.exe (-h|--help)
 
         Options:
@@ -41,7 +41,8 @@ namespace TagCloud
         --width WIDTH       Width window.[default: 800]
         --height HEIGHT     Height window.[default: 600]
         --count COUNT       Minimum number of characters allowed.[default: 3]
-        --msize MAX         The maximum word size in the cloud.[default: 100]
+        --maxsize MAX       The maximum word size in the cloud.[default: 120]
+        --minsize MIN       The minimum word size in the cloud.[default: 3]
         --color COLOR       Color text.[default: Red]
         --style STYLE       Font Style.[default: FontStyle.Regular]
         --text TEXT         File name\path is have some text.[default: input.txt]
@@ -56,12 +57,13 @@ namespace TagCloud
                 var width = int.Parse(arguments["--width"].Value.ToString());
                 var height = int.Parse(arguments["--height"].Value.ToString());
                 var count = int.Parse(arguments["--count"].Value.ToString());
-                var maxSizeWord = float.Parse(arguments["--msize"].Value.ToString());
+                var maxSizeWord = float.Parse(arguments["--maxsize"].Value.ToString());
+                var minSizeWord = float.Parse(arguments["--minsize"].Value.ToString());
                 var color = (Color)new ColorConverter().ConvertFromString(arguments["--color"].ToString());
                 var fontStyle = ((Font)new FontConverter().ConvertFromString(arguments["--style"].ToString())).Style;
                 var textFileName = arguments["--text"].Value.ToString();
                 var fileNameWithPicture = arguments["--pict"].ToString();
-                StartTagCloud(width, height, count, color, maxSizeWord, fontStyle, textFileName, fileNameWithPicture);
+                StartTagCloud(width, height, count, color, maxSizeWord, minSizeWord, fontStyle, textFileName, fileNameWithPicture);
             }
             catch (Exception e)
             {

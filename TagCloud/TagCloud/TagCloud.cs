@@ -44,7 +44,10 @@ namespace TagCloud
                 {
                     var fontForWord = GetFont(pictureConfigurator.Painter, maxQuantity,
                         minQuantity, word.Quantity, word.Text);
-                    
+                    if (fontForWord.Size < 5)
+                    {
+                        break;
+                    }
                     var sizeOfWord = g.MeasureString(word.Text, fontForWord);
                     Point leftTopCorner;
                     try

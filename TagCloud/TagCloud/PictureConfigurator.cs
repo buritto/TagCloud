@@ -10,12 +10,13 @@ namespace TagCloud
         public int Width { get; }
         public IWordPainter Painter { get; private set; }
 
-        public PictureConfigurator(int width, int height, Color color, float maxSize = 120, FontStyle fontStyle = FontStyle.Regular)
+        public PictureConfigurator(int width, int height, Color color, 
+            float maxSize = 120, float minSize = 3, FontStyle fontStyle = FontStyle.Regular)
         {
             CheckCorrectArgumentConstructor(width, height,color);
             Width = width;
             Height = height;
-            Painter = new DefaultWordPainter(color, maxSize, fontStyle);
+            Painter = new DefaultWordPainter(color, maxSize, minSize, fontStyle);
         }
 
         [AssertionMethod]

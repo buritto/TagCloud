@@ -4,13 +4,15 @@ namespace TagCloud
 {
     internal class DefaultWordPainter : IWordPainter
     {
+        public float MinSize { get; }
         public float MaxSize { get; }
         public FontStyle FontStyle { get; }
         public FontFamily FontFamily { get; }
         public Color Color { get; }
 
-        public DefaultWordPainter(Color color, float maxSize, FontStyle fontStyle)
+        public DefaultWordPainter(Color color, float maxSize, float minSize, FontStyle fontStyle)
         {
+            MinSize = minSize;
             MaxSize = maxSize;
             FontFamily = FontFamily.GenericSansSerif;
             FontStyle = fontStyle;

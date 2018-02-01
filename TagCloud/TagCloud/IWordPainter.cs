@@ -7,6 +7,7 @@ namespace TagCloud
     /// </summary>
     public interface IWordPainter
     {
+        float MinSize { get; }
         float MaxSize { get;}
         FontStyle FontStyle { get; }
         FontFamily FontFamily { get; }
