@@ -2,31 +2,17 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using TagCloud.WindowsForGUI;
 
 namespace TagCloud
 {
-    internal class ImageSettingWindow : Form
-    {
-       
-    }
-
-    internal class TextSettingWindow : Form
-    {
-
-    }
-
-    internal class ShowImageAfterCreated : Form
-    {
-
-    }
-
 
     internal class GUI : Form
     {
-       
-        private ImageSettingWindow ISWindow = new ImageSettingWindow();
-        private TextSettingWindow TSWindow = new TextSettingWindow();
-        private ShowImageAfterCreated STCWindow = new ShowImageAfterCreated();
+        private ProgrammArgumentsValue values = new ProgrammArgumentsValue();
+        private ImageSettingWindow imageSetting;
+        private TextSettingWindow textSetting;
+        private ShowImageAfterCreated windowWithCreatedImage;
 
         private void CreateButton()
         {
@@ -38,14 +24,14 @@ namespace TagCloud
                 Text = "Image setting",
                 Font = buttonFont
             });
-            listForButton.Last().Click += (sender, args) => ISWindow.Show();
+            listForButton.Last().Click += (sender, args) => imageSetting.Show();
 
             listForButton.Add(new Button()
             {
                 Text = "Text setting",
                 Font = buttonFont
             });
-            listForButton.Last().Click += (sender, args) => TSWindow.Show();
+            listForButton.Last().Click += (sender, args) => textSetting.Show();
 
             listForButton.Add(new Button()
             {
@@ -87,7 +73,6 @@ namespace TagCloud
 
         private List<Button> SetBounds(List<Button> buttons)
         {
-            var im = new ImageSettingWindow();
             var x = 17;
             var y = 20;
             var width = 250;
@@ -102,6 +87,11 @@ namespace TagCloud
 
         public GUI(int width = 300, int height = 400)
         {
+
+            imageSetting = new ImageSettingWindow(values);
+            textSetting = new TextSettingWindow(values);
+            windowWithCreatedImage = new ShowImageAfterCreated();
+
             Width = width;
             Height = height;
             CreateButton();

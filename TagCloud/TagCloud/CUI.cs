@@ -40,18 +40,17 @@ namespace TagCloud
             values.FileNameWithPicture = arguments["--pict"].ToString();
             return values;
         }
-
-        internal class ProgrammArgumentsValue
-        {
-            public int Width { get; set; }
-            public int Heigth { get; set; }
-            public int Count { get; set; }
-            public float MaxSizeWord { get; set; }
-            public float MinSizeWord { get; set; }
-            public Color Color { get; set; }
-            public FontStyle FontStyle { get; set; }
-            public string TextFileName { get; set; }
-            public string FileNameWithPicture { get; set; }
-        }
+    }
+    internal class ProgrammArgumentsValue
+    {
+        public int Width { get; set; }
+        public int Heigth { get; set; }
+        public int Count { get; set; }
+        public float MaxSizeWord { get; set; }
+        public float MinSizeWord { get; set; }
+        public Color Color { get; set; }
+        public FontStyle FontStyle { get; set; }
+        public string TextFileName { get; set; }
+        public string FileNameWithPicture { get; set; }
     }
 }

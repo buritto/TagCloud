@@ -85,6 +85,15 @@
     </Compile>
     <Compile Include="TagCloud.cs" />
     <Compile Include="TxtReader.cs" />
+    <Compile Include="WindowsForGUI\ImageSettingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForGUI\ShowImageAfterCreated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForGUI\TextSettingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Word.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
