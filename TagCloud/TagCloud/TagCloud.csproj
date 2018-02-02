@@ -66,6 +66,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Interfaces\IFormatReader.cs" />
     <Compile Include="Interfaces\IPainter.cs" />
     <Compile Include="Interfaces\ITagCloudBuilder.cs" />

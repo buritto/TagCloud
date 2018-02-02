@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Autofac;
-using DocoptNet;
+using System.Windows.Forms;
 
 namespace TagCloud
 {
@@ -32,11 +32,13 @@ namespace TagCloud
         
         static void Main(string[] args)
         {
+            var form = new GUI();
             try
             {
                 var values = CUI.ParseArguments(args); 
                 StartTagCloud(values.Width, values.Heigth, values.Count, values.Color, values.MaxSizeWord,
                     values.MinSizeWord, values.FontStyle, values.TextFileName, values.FileNameWithPicture);
+                Application.Run(form);
             }
             catch (Exception e)
             {
