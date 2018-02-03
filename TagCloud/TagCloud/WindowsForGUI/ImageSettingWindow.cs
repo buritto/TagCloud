@@ -6,19 +6,20 @@ namespace TagCloud.WindowsForGUI
 {
     internal class ImageSettingWindow : Form
     {
-        private ProgrammArgumentsValue values;
+        private readonly ProgrammArgumentsValue values;
 
         public ImageSettingWindow(ProgrammArgumentsValue values)
         {
+            var config = new GraphicInterfaceConfig();
             this.values = values;
-            var padx = 25;
-            var pady = 75;
+            //var padx = 25;
+            //var pady = 75;
             var dx = 100;
             var dy = 45;
-            var size = new Size(100, 30);
+            //var size = new Size(100, 30);
             Width = 300;
             Height = 400;
-            var font = new Font(FontFamily.GenericSansSerif, 10);
+            //var font = new Font(FontFamily.GenericSansSerif, 10);
             
             var settingName = new Label()
             {
@@ -28,13 +29,13 @@ namespace TagCloud.WindowsForGUI
             #region SettingWidth
             var labelWidth = new Label()
             {
-                Font = font,
+                Font = config.TextFont,
                 Text = "Width:"
             };
 
             var textWidth =new TextBox(){Text = "800"};
-            labelWidth.Bounds = new Rectangle(padx, pady, size.Width, size.Height);
-            textWidth.Bounds = new Rectangle(padx + dx, pady, size.Width, size.Height);
+            labelWidth.Bounds = new Rectangle(config.PadX, config.PadY, config.Width, config.Height);
+            textWidth.Bounds = new Rectangle(config.PadX + dx, config.PadY, config.Width, config.Height);
             Controls.Add(textWidth);
             Controls.Add(labelWidth);
             #endregion
@@ -44,12 +45,12 @@ namespace TagCloud.WindowsForGUI
             var labelHeight = new Label()
             {
                 Text =  "Height",
-                Font =  font
+                Font =  config.TextFont
             };
 
             var textHeight = new TextBox(){Text = "600"};
-            labelHeight.Bounds = new Rectangle(padx, pady+=dy, size.Width, size.Height);
-            textHeight.Bounds = new Rectangle(padx + dx, pady, size.Width, size.Height);
+            labelHeight.Bounds = new Rectangle(config.PadX, config.PadY+=dy, config.Width, config.Height);
+            textHeight.Bounds = new Rectangle(config.PadX + dx, config.PadY, config.Width, config.Height);
             Controls.Add(labelHeight);
             Controls.Add(textHeight);
             #endregion
@@ -58,12 +59,12 @@ namespace TagCloud.WindowsForGUI
             var labelBackgroundColor = new Label()
             {
                 Text = "Background color",
-                Font = font,
+                Font = config.TextFont,
             };
             var cheangeColorButton = new Button();
             cheangeColorButton.Click += (sender, args) => CheangeColor(sender);
-            labelBackgroundColor.Bounds = new Rectangle(padx, pady+=dy, size.Width, size.Height);
-            cheangeColorButton.Bounds = new Rectangle(padx + dx, pady, size.Width, size.Height);
+            labelBackgroundColor.Bounds = new Rectangle(config.PadX, config.PadY+=dy, config.Width, config.Height);
+            cheangeColorButton.Bounds = new Rectangle(config.PadX + dx, config.PadY, config.Width, config.Height);
             Controls.Add(labelBackgroundColor);
             Controls.Add(cheangeColorButton);
             #endregion
@@ -73,7 +74,7 @@ namespace TagCloud.WindowsForGUI
             var labelTextColor = new Label()
             {
                 Text = "Text color",
-                Font = font
+                Font = config.TextFont
             };
 
             var cheangeTextColorButton = new Button()
@@ -81,8 +82,8 @@ namespace TagCloud.WindowsForGUI
                 Text = "Example",
                 ForeColor = Color.Red,
             };
-            labelTextColor.Bounds = new Rectangle(padx, pady += dy, size.Width, size.Height);
-            cheangeTextColorButton.Bounds = new Rectangle(padx + dx, pady, size.Width, size.Height);
+            labelTextColor.Bounds = new Rectangle(config.PadX, config.PadY += dy, config.Width, config.Height);
+            cheangeTextColorButton.Bounds = new Rectangle(config.PadX + dx, config.PadY, config.Width, config.Height);
             cheangeTextColorButton.Click += (sender, args) => CheangeTextColor(sender);
             Controls.Add(labelTextColor);
             Controls.Add(cheangeTextColorButton);
@@ -91,17 +92,17 @@ namespace TagCloud.WindowsForGUI
             var accept = new Button()
             {
                 Text = "Ok",
-                Font = font
+                Font = config.TextFont
             };
 
             var cancel = new Button()
             {
                 Text = "Cancel",
-                Font = font
+                Font = config.TextFont
             };
 
-            accept.Bounds = new Rectangle(padx, pady += dy, size.Width, size.Height);
-            cancel.Bounds = new Rectangle(padx + dx + 20, pady ,size.Width, size.Height);
+            accept.Bounds = new Rectangle(config.PadX, config.PadY += dy, config.Width, config.Height);
+            cancel.Bounds = new Rectangle(config.PadX + dx + 20, config.PadY ,config.Width, config.Height);
             accept.Click += (sender, args) => Accept(textWidth.Text, textHeight.Text, cheangeColorButton.BackColor,
                 cheangeTextColorButton.ForeColor);
             cancel.Click += (sender, args) => this.Hide();

@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="TagCloud.cs" />
     <Compile Include="TxtReader.cs" />
+    <Compile Include="WindowsForGUI\GraphicInterfaceConfig.cs" />
     <Compile Include="WindowsForGUI\ImageSettingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
