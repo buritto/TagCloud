@@ -4,28 +4,20 @@ using System.Windows.Forms;
 
 namespace TagCloud.WindowsForGUI
 {
-    internal class ImageSettingWindow : Form
+    internal class ImageSettingWindow : WindowSetting
     {
-        private readonly ProgrammArgumentsValue values;
 
         public ImageSettingWindow(ProgrammArgumentsValue values)
+                :base("Image setting", values)
         {
-            var config = new GraphicInterfaceConfig();
-            this.values = values;
+            
             //var padx = 25;
             //var pady = 75;
             var dx = 100;
             var dy = 45;
             //var size = new Size(100, 30);
-            Width = 300;
-            Height = 400;
             //var font = new Font(FontFamily.GenericSansSerif, 10);
             
-            var settingName = new Label()
-            {
-                Font = new Font(FontFamily.GenericSansSerif, 14),
-                Text = "Image setting"
-            };
             #region SettingWidth
             var labelWidth = new Label()
             {
@@ -108,8 +100,7 @@ namespace TagCloud.WindowsForGUI
             cancel.Click += (sender, args) => this.Hide();
             Controls.Add(accept);
             Controls.Add(cancel);
-            settingName.Bounds = new Rectangle(75, 20, 250, 30);
-            Controls.Add(settingName);
+            
         }
 
         private void Accept(string widthWindow, string heightWindow, Color backgroundColor, Color textColor)
