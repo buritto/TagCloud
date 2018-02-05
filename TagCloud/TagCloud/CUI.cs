@@ -11,9 +11,11 @@ namespace TagCloud
         Usage:
         TagCloud.exe [--width WIDTH] [--height HEIGHT] [--count COUNT] [--color COLOR] [--style STYLE] [--text TEXT] [--pict PICTURE] [--maxsize MAX] [--minsize MIN]
         TagCloud.exe (-h|--help)
+        TagCloud.exe (-c|--commandline)
 
         Options:
         -h --help           Show this screen.
+        -c --commandline    Specify this key if you want to run a progroup without a graphical interface with default arguments.
         --width WIDTH       Width window.[default: 800]
         --height HEIGHT     Height window.[default: 600]
         --count COUNT       Minimum number of characters allowed.[default: 3]

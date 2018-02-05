@@ -33,11 +33,13 @@ namespace TagCloud
         [STAThread]
         static void Main(string[] args)
         {
+            Console.WriteLine(args);
             if (args.Length > 0)
             {
                var values = CUI.ParseArguments(args); 
                StartTagCloud(values.Width, values.Heigth, values.Count, values.Color, values.MaxSizeWord,
-                   values.MinSizeWord, values.FontStyle, values.TextFileName, values.FileNameWithPicture).Save(values.FileNameWithPicture);   
+                   values.MinSizeWord, values.FontStyle, values.TextFileName, values.FileNameWithPicture).Save(values.FileNameWithPicture);  
+               return;  
             }
             var form = new GUI();
             try
