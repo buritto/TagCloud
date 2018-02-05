@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using TagCloud.WindowsForGUI;
@@ -68,7 +70,25 @@ namespace TagCloud
 
         private void LoadText()
         {
-            throw new System.NotImplementedException();
+            var openDialog = new OpenFileDialog();
+            //  openDialog.InitialDirectory = "c:\\";
+            openDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+            openDialog.FilterIndex = 2;
+            openDialog.Multiselect = false;
+            try
+            {
+                if (openDialog.ShowDialog() == DialogResult.OK)
+                {
+                    values.TextFileName = openDialog.FileName;
+                    MessageBox.Show("File successfully selected", "Success");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+
         }
 
         private List<Button> SetBounds(List<Button> buttons)

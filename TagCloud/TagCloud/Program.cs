@@ -29,7 +29,8 @@ namespace TagCloud
                 component.PaintTagCloud(textFileName, fileNameWithPicture);
             }
         }
-        
+
+        [STAThread]
         static void Main(string[] args)
         {
             var form = new GUI();

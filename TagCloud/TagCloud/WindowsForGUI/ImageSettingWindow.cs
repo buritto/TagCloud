@@ -57,8 +57,9 @@ namespace TagCloud.WindowsForGUI
             cheangeColorButton.Click += (sender, args) => CheangeColor(sender);
             labelBackgroundColor.Bounds = new Rectangle(config.PadX, config.PadY+=dy, config.Width, config.Height);
             cheangeColorButton.Bounds = new Rectangle(config.PadX + dx, config.PadY, config.Width, config.Height);
-            Controls.Add(labelBackgroundColor);
-            Controls.Add(cheangeColorButton);
+            //this function will added in logik
+            //Controls.Add(labelBackgroundColor);
+            //Controls.Add(cheangeColorButton);
             #endregion
 
             #region TextColor
