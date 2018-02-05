@@ -1,6 +1,6 @@
 
 # TagCloud
- #### Tag cloud - then the usual application for creating an image of their text. Specify the text you want to build the cloud, the settings for the text and the image of your cloud is ready. The size of the word depends on the frequency of occurrence of the word in the text.
+ #### Tag cloud - the application for creating a text image. Specify a text you want to build the cloud of, text options - and the image of your cloud is ready. The word size is determined by frequency of current word occurrence in your text.
  
 ![alt text](https://pp.userapi.com/c831208/v831208852/6bfc4/toi6j1IvjgQ.jpg)
 ## Command line interface
