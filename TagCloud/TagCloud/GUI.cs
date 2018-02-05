@@ -65,13 +65,13 @@ namespace TagCloud
 
         private void CreateTagCloud()
         {
-            throw new System.NotImplementedException();
+            windowWithCreatedImage = new ShowImageAfterCreated();
+            windowWithCreatedImage.BuildTagCloud(values);
         }
 
         private void LoadText()
         {
             var openDialog = new OpenFileDialog();
-            //  openDialog.InitialDirectory = "c:\\";
             openDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
             openDialog.FilterIndex = 2;
             openDialog.Multiselect = false;
@@ -87,8 +87,6 @@ namespace TagCloud
             {
                 MessageBox.Show(e.Message);
             }
-            
-
         }
 
         private List<Button> SetBounds(List<Button> buttons)
@@ -109,8 +107,7 @@ namespace TagCloud
         {
 
             imageSetting = new ImageSettingWindow(values);
-            textSetting = new TextSettingWindow(values);
-            windowWithCreatedImage = new ShowImageAfterCreated();
+            textSetting = new TextSettingWindow(values); 
 
             Width = width;
             Height = height;

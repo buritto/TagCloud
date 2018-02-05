@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,7 +21,7 @@ namespace TagCloud.WindowsForGUI
                 Font = config.TextFont
             };
 
-            var maxSizeText = new TextBox(){Text = "14"};
+            var maxSizeText = new TextBox(){Text = "120"};
             maxSizeLabel.Bounds = GetBounds(config.PadX, config.PadY);
             maxSizeText.Bounds = GetBounds(config.PadX + dx, config.PadY);
             Controls.Add(maxSizeLabel);
@@ -81,13 +82,21 @@ namespace TagCloud.WindowsForGUI
             #endregion
         }
 
+        private Dictionary<string, FontStyle> styles = new Dictionary<string, FontStyle>()
+        {
+            {"Bold", FontStyle.Bold },
+            {"Italic", FontStyle.Italic},
+            {"Regular", FontStyle.Regular},
+            {"Strikeout", FontStyle.Strikeout},
+            {"Underline", FontStyle.Underline}
+        };
         private void Accept(string maxSize, string minSize, object style)
         {
             try
             {
                 values.MaxSizeWord = int.Parse(maxSize);
                 values.MinSizeWord = int.Parse(minSize);
-                values.FontStyle = ((Font)new FontConverter().ConvertFromString(style.ToString())).Style;
+                values.FontStyle = styles[style.ToString()];
                 this.Hide();
             }
             catch (Exception e)

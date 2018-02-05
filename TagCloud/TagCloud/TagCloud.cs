@@ -24,7 +24,7 @@ namespace TagCloud
             this.builder = builder;
         }
 
-        public void PaintTagCloud(string inputFile, string pictureResultName)
+        public Bitmap PaintTagCloud(string inputFile, string pictureResultName)
         {
             var words = reader.GetFileData(inputFile)
                 .Where(word => contentConfigurator.IsWordValid(word.Text))
@@ -65,7 +65,8 @@ namespace TagCloud
                     using (var solidBrush = new SolidBrush(colorForWord))
                         g.DrawString(word.Text, fontForWord, solidBrush, rectangle);
                 }
-                picture.Save(pictureResultName);
+
+                return picture;
             }
         }
 

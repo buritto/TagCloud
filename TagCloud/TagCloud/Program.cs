@@ -7,7 +7,7 @@ namespace TagCloud
 {
     public static class Program
     {
-        private static void StartTagCloud(int width, int height, int count,
+        internal static Bitmap StartTagCloud(int width, int height, int count,
             Color color, float maxSizeWord, float minSizeWord, FontStyle style, string textFileName, string fileNameWithPicture)
         {
             var builder = new ContainerBuilder();
@@ -26,19 +26,23 @@ namespace TagCloud
             using (container.BeginLifetimeScope())
             {
                 var component = container.Resolve<TagCloud>();
-                component.PaintTagCloud(textFileName, fileNameWithPicture);
+                return component.PaintTagCloud(textFileName, fileNameWithPicture);
             }
         }
 
         [STAThread]
         static void Main(string[] args)
         {
+            if (args.Length > 0)
+            {
+               var values = CUI.ParseArguments(args); 
+               StartTagCloud(values.Width, values.Heigth, values.Count, values.Color, values.MaxSizeWord,
+                   values.MinSizeWord, values.FontStyle, values.TextFileName, values.FileNameWithPicture).Save(values.FileNameWithPicture);   
+            }
             var form = new GUI();
             try
             {
-                var values = CUI.ParseArguments(args); 
-                StartTagCloud(values.Width, values.Heigth, values.Count, values.Color, values.MaxSizeWord,
-                    values.MinSizeWord, values.FontStyle, values.TextFileName, values.FileNameWithPicture);
+              
                 Application.Run(form);
             }
             catch (Exception e)

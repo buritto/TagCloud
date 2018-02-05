@@ -43,6 +43,19 @@ namespace TagCloud
     }
     internal class ProgrammArgumentsValue
     {
+        public ProgrammArgumentsValue()
+        {
+            //init defoult param
+            Width = 800;
+            Heigth = 600;
+            Count = 3;
+            MaxSizeWord = 120;
+            MinSizeWord = 3;
+            Color = Color.Red;
+            FontStyle = FontStyle.Regular;
+            TextFileName = "input.txt";
+            FileNameWithPicture = "C:\\Users\\buritto\\Desktop\\someFolder\\output.png";
+        }
         public int Width { get; set; }
         public int Heigth { get; set; }
         public int Count { get; set; }
