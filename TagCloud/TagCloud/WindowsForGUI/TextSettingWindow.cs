@@ -6,11 +6,11 @@ using System.Windows.Forms;
 namespace TagCloud.WindowsForGUI
 {
     internal class TextSettingWindow : WindowSetting
-    {
+    { 
+
         public TextSettingWindow(ProgrammArgumentsValue values)
                :base("Text setting", values)
         {
-
             var dx = 100;
             var dy = 45;
             #region MaxSizeField

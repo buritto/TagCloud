@@ -7,6 +7,12 @@ namespace TagCloud.WindowsForGUI
     {
         protected readonly ProgrammArgumentsValue values;
         protected readonly GraphicInterfaceConfig config;
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
         public WindowSetting(string nameSetting, ProgrammArgumentsValue values)
         {
 

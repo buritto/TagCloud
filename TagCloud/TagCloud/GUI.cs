@@ -54,7 +54,7 @@ namespace TagCloud
                 Text = "Exit",
                 Font = buttonFont
             });
-            listForButton.Last().Click += (sender, args) => Application.Exit();
+            listForButton.Last().Click += (sender, args) => Close();
             #endregion
 
             foreach (var button in SetBounds(listForButton))
@@ -113,5 +113,6 @@ namespace TagCloud
             Height = height;
             CreateButton();
         }
+      
     }
 }
